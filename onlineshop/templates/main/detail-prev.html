@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Nkilani by Teiyan</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    {% load static %}
+    {% load custom_filters %}
+
+    <!-- Favicon -->
+    <link href="{% static 'img/nkilani%20logo.jpg' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid">
+        <div class="row bg-secondary py-1 px-xl-5">
+            <div class="col-lg-6 d-none d-lg-block">
+                <div class="d-inline-flex align-items-center h-100">
+                    <a class="text-body mr-3" href="">About</a>
+                    <a class="text-body mr-3" href="contact.html">Contact</a>
+                    <a class="text-body mr-3" href="contact.html">Help</a>
+                    <a class="text-body mr-3" href="">FAQs</a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                             <a href="{% url 'overview:signin' %}" class="dropdown-item">Sign in</a>
+                             <a href="{% url 'overview:signup' %}" class="dropdown-item">Sign up</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-inline-flex align-items-center d-block d-lg-none">
+                    <a href="{% url 'overview:wishlist-prev' %}" class="btn px-0 ml-2">
+                        <i class="fas fa-heart text-dark"></i>
+                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;" id="wishlist-count2">0</span>
+                    </a>
+                    <a href="{% url 'overview:cart-prev' %}" class="btn px-0 ml-2">
+                        <i class="fas fa-shopping-cart text-dark"></i>
+                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;" id="cart-count2">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
+            <div class="col-lg-4">
+                <a href="" class="text-decoration-none">
+                    <span class="h1 text-primary bg-dark px-2">Nkilani</span>
+                    <span class="h5  text-primary bg-transparent px-2">by</span>
+                    <span class="h1  text-dark bg-primary px-2 ml-n1">Teiyan</span>
+                </a>
+            </div>
+            <div class="col-lg-4 col-6 text-left">
+                  <form method="post" action="{% url 'overview:search' %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="search_input" placeholder="Search for products">
+                        <a type="submit">
+                            <div class="input-group-append">
+                                <span class="input-group-text bg-transparent text-primary">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-4 col-6 text-right">
+                <p class="m-0">Customer Service</p>
+                <h5 class="m-0">0720952739</h5>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid bg-dark mb-30">
+        <div class="row px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block">
+                <a class="btn d-flex align-items-center justify-content-between bg-primary w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; padding: 0 30px;">
+                    <h6 class="text-dark m-0"><i class="fa fa-bars mr-2"></i>WELCOME</h6>
+                    <i class="fa fa-shopping-bag text-dark"></i>
+                </a>
+            </div>
+            <div class="col-lg-9">
+                <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
+                    <a href="" class="text-decoration-none d-block d-lg-none">
+                       <span class="h1 text-primary bg-dark px-2">Nkilani</span>
+                       <span class="h5 text-primary bg-transparent px-2">by</span>
+                       <span class="h1 text-dark bg-primary px-2 ml-n1">Teiyan</span>
+                    </a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto py-0">
+                            <a href="{% url 'overview:landing_page' %}" class="nav-item nav-link">Home</a>
+                            <a href="{% url 'overview:shop-prev' %}" class="nav-item nav-link active">Shop</a>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
+                                <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
+                                    <a href="{% url 'overview:cart-prev' %}" class="dropdown-item">Shopping Cart</a>
+                                    <a href="{% url 'overview:wishlist-prev' %}" class="dropdown-item">Wishlist</a>
+                                </div>
+                            </div>
+                            <a href="{% url 'overview:info' %}" class="nav-item nav-link">Contact</a>
+                        </div>
+                        <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
+                            <a href="{% url 'overview:wishlist-prev' %}" class="btn px-0">
+                                <i class="fas fa-heart text-primary"></i>
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;" id="wishlist-count">0</span>
+                            </a>
+                            <a href="{% url 'overview:cart-prev' %}" class="btn px-0 ml-3">
+                                <i class="fas fa-shopping-cart text-primary"></i>
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;" id="cart-count">0</span>
+                            </a>
+                        </div>
+                        <script>
+                            function updateCartAndWishlistCounts() {
+                                $.ajax({
+                                    url: "{% url 'overview:cart-items-count' %}",
+                                    type: "GET",
+                                    success: function(response) {
+                                        var cartCount = response.total_items;
+                                        $("#cart-count").text(cartCount);
+                                        $("#cart-count2").text(cartCount);
+                                    }
+                                });
+
+                                $.ajax({
+                                    url: "{% url 'overview:wishlist-items-count' %}",
+                                    type: "GET",
+                                    success: function(response) {
+                                        var wishlistCount = response.total_items;
+                                        $("#wishlist-count").text(wishlistCount);
+                                        $("#wishlist-count2").text(wishlistCount);
+                                    }
+                                });
+                            }
+
+                            // Call the function to update counts when the page loads
+                            $(document).ready(function() {
+                                updateCartAndWishlistCounts();
+                            });
+                        </script>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="#">Home</a>
+                    <a class="breadcrumb-item text-dark" href="#">Shop</a>
+                    <span class="breadcrumb-item active">Shopping Cart</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+
+    <!-- Shop Detail Start -->
+    <div class="container-fluid pb-5">
+        <div class="row px-xl-5">
+            <div class="col-lg-5 mb-30">
+                <div id="product-carousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner bg-light">
+                    <div class="carousel-item active">
+                        <img class="w-100 h-100" src="/media/{{ product.image }}" alt="{{ product.name }}">
+                    </div>
+                    {% for image in product_images %}
+                    <div class="carousel-item">
+                        <img class="w-100 h-100" src="{{ image.image.url }}" alt="{{ product.name }}">
+                    </div>
+                    {% endfor %}
+                </div>
+                    <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
+                        <i class="fa fa-2x fa-angle-left text-dark"></i>
+                    </a>
+                    <a class="carousel-control-next" href="#product-carousel" data-slide="next">
+                        <i class="fa fa-2x fa-angle-right text-dark"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-7 h-auto mb-30">
+                <div class="h-100 bg-light p-30">
+                    <h3>{{ product.name }}</h3>
+                    <div class="d-flex mb-3">
+                        <div class="text-primary mr-2">
+                            <small class="fas fa-star"></small>
+                            <small class="fas fa-star"></small>
+                            <small class="fas fa-star"></small>
+                            <small class="fas fa-star-half-alt"></small>
+                            <small class="far fa-star"></small>
+                        </div>
+                        <small class="pt-1">(99 Reviews)</small>
+                    </div>
+                    <h3 class="font-weight-semi-bold mb-4">Ksh .{{ product.price }}</h3>
+                    <p class="mb-4">{{ product.description }}</p>
+                    <div class="d-flex mb-3">
+                        <strong class="text-dark mr-3">Sizes:</strong>
+                        {% for size in product.sizes.all %}
+                        <label class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" id="size-{{ size.id }}" name="size">
+                            <span class="custom-control-label">{{ size.name }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                    <div class="d-flex mb-4">
+                        <strong class="text-dark mr-3">Colors:</strong>
+                        {% for color in product.colors.all %}
+                        <label class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" id="color-{{ color.id }}" name="color">
+                            <span class="custom-control-label">{{ color.name }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                    <div class="d-flex align-items-center mb-4 pt-2">
+                        <div class="input-group quantity mr-3" style="width: 130px;">
+                            <div class="input-group-btn">
+                                <button class="btn btn-primary btn-minus">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                            <input type="text" class="form-control bg-secondary border-0 text-center" value="1">
+                            <div class="input-group-btn">
+                                <button class="btn btn-primary btn-plus">
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <form method="post" action="{% url 'userview:add_to_cart' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="product_id" value="{{ product.id }}">
+                            <button type="submit" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button>
+                        </form>
+                    </div>
+                    <div class="d-flex pt-2">
+                        <strong class="text-dark mr-2">Share on:</strong>
+                        <div class="d-inline-flex">
+                            <a class="text-dark px-2" href="">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a class="text-dark px-2" href="">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a class="text-dark px-2" href="">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a class="text-dark px-2" href="">
+                                <i class="fab fa-pinterest"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="bg-light p-30">
+                <div class="nav nav-tabs mb-4">
+                    <a class="nav-item nav-link text-dark active" data-toggle="tab" href="#tab-pane-1">Description</a>
+                    <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-2">Additional Information</a>
+                    <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-3">Reviews
+                        {% if product.reviews.count > 0 %}
+                            ({{ product.reviews.count }})
+                        {% else %}
+                            (0)
+                        {% endif %}
+                    </a>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="tab-pane-1">
+                        <h4 class="mb-3">Product Description</h4>
+                        <p>{{ product.description }}</p>
+                    </div>
+                    <div class="tab-pane fade" id="tab-pane-2">
+                        <h4 class="mb-3">Additional Information</h4>
+                        <ul class="list-group list-group-flush">
+                            {% for info in product.additional_information.all %}
+                            <li class="list-group-item px-0">{{ info }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="tab-pane-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="mb-4">
+                                    {% if product.reviews.count > 0 %}
+                                        {{ product.reviews.count }} review(s) for "{{ product.name }}"
+                                    {% else %}
+                                        No reviews for "{{ product.name }}"
+                                    {% endif %}
+                                </h4>
+                                {% if product.reviews.count > 0 %}
+                                    {% for review in product.reviews.all %}
+                                    <div class="media mb-4">
+                                        <img src="{{ review.user.profile_picture.url }}" alt="User Image"
+                                            class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                        <div class="media-body">
+                                            <h6>{{ review.user.get_full_name }}<small> - <i>{{ review.date_created|date:"d M Y" }}</i></small></h6>
+                                            <div class="text-primary mb-2">
+                                                {% for star in review.rating|get_stars %}
+                                                    <i class="fas fa-star"></i>
+                                                {% endfor %}
+                                                {% for star in product.reviews|get_empty_stars:review.rating %}
+                                                    <i class="far fa-star"></i>
+                                                {% endfor %}
+                                            </div>
+                                            <p>{{ review.text }}</p>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6">
+                                <form action="{% url 'userview:review-product' %}" method="post">
+                                    {% csrf_token %}
+                                    <h4 class="mb-4">Leave a review</h4>
+                                    <small>Your email address will not be published. Required fields are marked *</small>
+                                    <div class="d-flex my-3">
+                                        <p class="mb-0 mr-2">Your Rating * :</p>
+                                        <div class="text-primary">
+                                            <input type="hidden" name="product_id" value="{{ product.id }}">
+                                            <input type="hidden" name="user_id" value="{{ user.id }}">
+                                            <input type="hidden" name="next" value="{{ request.path }}">
+                                            <select name="rating" class="custom-select">
+                                                <option value="1">1 Star</option>
+                                                <option value="2">2 Stars</option>
+                                                <option value="3">3 Stars</option>
+                                                <option value="4">4 Stars</option>
+                                                <option value="5">5 Stars</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message">Your Review *</label>
+                                        <textarea id="message" name="text" cols="30" rows="5" class="form-control"
+                                            required></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Your Name *</label>
+                                        <input type="text" name="name" class="form-control" id="name" required>
+                                    </div>
+                                    <div class="form-group mb-0">
+                                        <input type="submit" value="Leave Your Review" class="btn btn-primary px-3">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Shop Detail End -->
+
+
+<!-- Products Start -->
+<div class="container-fluid py-5" style="display: None;">
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">You May Also Like</span></h2>
+    <div class="row px-xl-5">
+        <div class="col">
+            <div class="related-carousel-container">
+                <div class="d-flex flex-row">
+                    {% for product in products|slice:":5" %}
+                    <div class="product-item bg-light" style="max-width: 200px; margin-right:40px;">
+                        <div class="product-img position-relative overflow-hidden">
+                            <img class="img-fluid w-100" style="height: 280px;" src="/media/{{ product.image }}" alt="{{ product.name }}">
+                            <div class="product-action">
+                                <a class="btn btn-outline-dark btn-square" href="{% url 'userview:add_to_cart' %}"><i class="fa fa-shopping-cart"></i></a>
+                                <a class="btn btn-outline-dark btn-square" href="{% url 'userview:add_to_wishlist' %}"><i class="far fa-heart"></i></a>
+                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
+                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center py-4">
+                            <a class="h6 text-decoration-none text-truncate" href="{% url 'userview:prod-detail' prodid=product.id %}">{{ product.name }}</a>
+                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                <h5>Ksh .{{ product.price }}</h5>
+                                <h6 class="text-muted ml-2"><del>Ksh .{{ product.original_price }}</del></h6>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center mb-1">
+                                {% for _ in product.rating_range %}
+                                    <small class="fa fa-star text-primary mr-1"></small>
+                                {% endfor %}
+                                <small>({{ product.review_count }})</small>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Products End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-secondary mt-5 pt-5">
+        <div class="row px-xl-5 pt-5">
+            <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+                <h5 class="text-secondary text-uppercase mb-4">Get In Touch</h5>
+                <p class="mb-4">There is nothing we consider more important to us than our customers. In case of any inconvenience please do not hesitate to contact us</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Nairobi,Kenya,Africa</p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>nkilanibyteiyan@gmail.com</p>
+                <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>0720952739</p>
+            </div>
+            <div class="col-lg-8 col-md-12">
+                <div class="row">
+                    <div class="col-md-4 mb-5">
+                        <h5 class="text-secondary text-uppercase mb-4">Quick Shop</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-secondary mb-2" href="{% url 'overview:landing_page' %}"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                            <a class="text-secondary mb-2" href="{% url 'overview:shop-prev' %}"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
+                            <a class="text-secondary mb-2" href="{% url 'overview:cart-prev' %}"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                            <a class="text-secondary mb-2" href="{% url 'overview:checkout-prev' %}"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                            <a class="text-secondary" href="{% url 'overview:checkout-prev' %}"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-5">
+                        <h5 class="text-secondary text-uppercase mb-4">My Account</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-secondary mb-2" href="{% url 'overview:landing_page' %}"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                            <a class="text-secondary mb-2" href="{% url 'overview:shop-prev' %}"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
+                            <a class="text-secondary mb-2" href="{% url 'overview:cart-prev' %}"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                            <a class="text-secondary mb-2" href="{% url 'overview:checkout-prev' %}"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                            <a class="text-secondary" href="{% url 'overview:checkout-prev' %}"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-5">
+                        <h5 class="text-secondary text-uppercase mb-4">Newsletter</h5>
+                        <p>To receive any information from us please subscribe </p>
+                        <form action="{% url 'overview:get-newsletter' %}" method="post">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="newsletter_email" placeholder="Your Email Address">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">Sign Up</button>
+                                </div>
+                            </div>
+                        </form>
+                        <h6 class="text-secondary text-uppercase mt-4 mb-3">Follow Us</h6>
+                        <div class="d-flex">
+                            <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-primary btn-square" href="https://www.instagram.com/nkilanibyteiyan/"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row border-top mx-xl-5 py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
+            <div class="col-md-6 px-xl-0">
+                <p class="mb-md-0 text-center text-md-left text-secondary">
+                    &copy; <a class="text-primary" href="#">Domain</a>. All Rights Reserved. Designed
+                    by
+                    <a class="text-primary" href="https://github.com/Mariaolotira">Mariao Lotira</a>
+                </p>
+            </div>
+            <div class="col-md-6 px-xl-0 text-center text-md-right">
+                <img class="img-fluid" src="{% static 'img/payments.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+  <script>
+    $(document).ready(function() {
+        // Get the CSRF token from the cookie.
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        $(".add-to-cart").click(function(e) {
+            e.preventDefault();
+            var productId = $(this).data("product-id");
+            $.ajax({
+                url: "{% url 'overview:add-to-cart' %}",
+                type: "POST",
+                data: { product_id: productId },
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken"));
+                },
+                success: function(response) {
+                    if (response.success) {
+                        // Handle the success response here (e.g., update the cart icon, show a notification).
+                    } else {
+                        // Handle the failure response here (e.g., show an error message).
+                    }
+                },
+                error: function() {
+                    // Handle errors (e.g., show an error message).
+                }
+            });
+        });
+    });
+</script>
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="{% static 'mail/jqBootstrapValidation.min.js' %}"></script>
+    <script src="{% static 'mail/contact.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Nkilani by Teiyan</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    {% load static %}
+    <!-- Favicon -->
+    <link href="{% static 'img/nkilani%20logo.jpg' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+<section class="">
+  <!-- Jumbotron -->
+  <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+    <div class="container">
+      <div class="row gx-lg-5 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0" style="margin-top: 0px">
+          <img style="height: 100%; width: 100%" src="{% static 'img/nkilani%20name.jpg' %}">
+        </div>
+
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="card">
+            <div class="card-body py-5 px-md-5">
+              <form id="loginForm" action="{% url 'overview:login' %}" method="post">
+                  {% csrf_token %}
+                    <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+
+                      <div class="text-center mb-3">
+                        <p>Sign in with:</p>
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                          <i class="fab fa-facebook-f"></i>
+                        </button>
+
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                          <i class="fab fa-google"></i>
+                        </button>
+
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                          <i class="fab fa-twitter"></i>
+                        </button>
+
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                          <i class="fab fa-github"></i>
+                        </button>
+                      </div>
+                    </div>
+
+                  <p class="text-center">or:</p>
+
+                  <div class="form-outline mb-4">
+                    <input type="email" id="loginName" class="form-control" name="email" required/>
+                    <label class="form-label" for="loginName">Email</label>
+                  </div>
+
+                  <!-- Password input -->
+                  <div class="form-outline mb-1">
+                    <input type="password" id="loginPassword" class="form-control" name="password" required/>
+                    <label class="form-label" for="loginPassword">Password</label>
+                  </div>
+
+                  <div class="col-md-12 d-flex justify-content-center mb-4">
+                      <a href="#!">Forgot password?</a>
+                  </div>
+
+                  <!-- 2 column grid layout -->
+                  <div class="row mb-4">
+                    <div class="col-md-12 d-flex justify-content-center">
+                      <!-- Checkbox -->
+                      <div class="form-check mb-3a">
+                        <input class="form-check-input" type="checkbox" value="" id="loginCheck" required/>
+                        <label class="form-check-label" for="loginCheck"> Remember me </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Submit button -->
+               <div class="col-md-12 form-submit">
+                 <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+               </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Jumbotron -->
+</section>
+
+  <!-- Register buttons -->
+  <div class="text-center mt-5">
+    <p>Not a member? <a href="signup">Register</a></p>
+  </div>
+
+<!-- Pills content -->
+</body>
+</html>

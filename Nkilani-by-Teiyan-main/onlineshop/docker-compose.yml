@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nkilani-docker-image
+    command: python manage.py runserver 0.0.0.0:4040
+    volumes:
+      - .:/app
+    ports:
+      - 4040:4040
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx-config:/etc/nginx/conf.d
+    depends_on:
+      - django
+

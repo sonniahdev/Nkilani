@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% if transaction_data %}
+    <h1>Payment Verification Successful</h1>
+    <p>Reference: {{ transaction_data.reference }}</p>
+    <p>Status: {{ transaction_data.status }}</p>
+    <p>Amount: {{ transaction_data.amount }}</p>
+    <!-- Display other transaction details as needed -->
+{% else %}
+    <h1>Payment Verification Failed</h1>
+{% endif %}
+
+</body>
+</html>

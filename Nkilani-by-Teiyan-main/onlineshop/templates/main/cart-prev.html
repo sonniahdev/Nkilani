@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Nkilani by Teiyan</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    {% load static %}
+    <!-- Favicon -->
+    <link href="{% static 'img/nkilani%20logo.jpg' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid">
+        <div class="row bg-secondary py-1 px-xl-5">
+            <div class="col-lg-6 d-none d-lg-block">
+                <div class="d-inline-flex align-items-center h-100">
+                    <a class="text-body mr-3" href="">About</a>
+                    <a class="text-body mr-3" href="contact.html">Contact</a>
+                    <a class="text-body mr-3" href="contact.html">Help</a>
+                    <a class="text-body mr-3" href="">FAQs</a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                             <a href="{% url 'overview:signin' %}" class="dropdown-item">Sign in</a>
+                             <a href="{% url 'overview:signup' %}" class="dropdown-item">Sign up</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-inline-flex align-items-center d-block d-lg-none">
+                    <a href="{% url 'overview:wishlist-prev' %}" class="btn px-0 ml-2">
+                        <i class="fas fa-heart text-dark"></i>
+                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;" id="wishlist-count2">0</span>
+                    </a>
+                    <a href="{% url 'overview:cart-prev' %}" class="btn px-0 ml-2">
+                        <i class="fas fa-shopping-cart text-dark"></i>
+                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;" id="cart-count2">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
+            <div class="col-lg-4">
+                <a href="" class="text-decoration-none">
+                    <span class="h1 text-primary bg-dark px-2">Nkilani</span>
+                    <span class="h5  text-primary bg-transparent px-2">by</span>
+                    <span class="h1  text-dark bg-primary px-2 ml-n1">Teiyan</span>
+                </a>
+            </div>
+            <div class="col-lg-4 col-6 text-left">
+                  <form method="post" action="{% url 'overview:search' %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="search_input" placeholder="Search for products">
+                        <a type="submit">
+                            <div class="input-group-append">
+                                <span class="input-group-text bg-transparent text-primary">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-4 col-6 text-right">
+                <p class="m-0">Customer Service</p>
+                <h5 class="m-0">0720952739</h5>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid bg-dark mb-30">
+        <div class="row px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block">
+                <a class="btn d-flex align-items-center justify-content-between bg-primary w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; padding: 0 30px;">
+                    <h6 class="text-dark m-0"><i class="fa fa-bars mr-2"></i>WELCOME</h6>
+                    <i class="fa fa-shopping-bag text-dark"></i>
+                </a>
+            </div>
+            <div class="col-lg-9">
+                <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
+                    <a href="" class="text-decoration-none d-block d-lg-none">
+                       <span class="h1 text-primary bg-dark px-2">Nkilani</span>
+                       <span class="h5 text-primary bg-transparent px-2">by</span>
+                       <span class="h1 text-dark bg-primary px-2 ml-n1">Teiyan</span>
+                    </a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto py-0">
+                            <a href="{% url 'overview:landing_page' %}" class="nav-item nav-link">Home</a>
+                            <a href="{% url 'overview:shop-prev' %}" class="nav-item nav-link">Shop</a>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
+                                <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
+                                    <a href="{% url 'overview:cart-prev' %}" class="dropdown-item active">Shopping Cart</a>
+                                    <a href="{% url 'overview:wishlist-prev' %}" class="dropdown-item">Wishlist</a>
+                                </div>
+                            </div>
+                            <a href="{% url 'overview:info' %}" class="nav-item nav-link">Contact</a>
+                        </div>
+                        <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
+                            <a href="{% url 'overview:wishlist-prev' %}" class="btn px-0">
+                                <i class="fas fa-heart text-primary"></i>
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;" id="wishlist-count">0</span>
+                            </a>
+                            <a href="{% url 'overview:cart-prev' %}" class="btn px-0 ml-3">
+                                <i class="fas fa-shopping-cart text-primary"></i>
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;" id="cart-count">0</span>
+                            </a>
+                        </div>
+                        <script>
+                            function updateCartAndWishlistCounts() {
+                                $.ajax({
+                                    url: "{% url 'overview:cart-items-count' %}",
+                                    type: "GET",
+                                    success: function(response) {
+                                        var cartCount = response.total_items;
+                                        $("#cart-count").text(cartCount);
+                                        $("#cart-count2").text(cartCount);
+                                    }
+                                });
+
+                                $.ajax({
+                                    url: "{% url 'overview:wishlist-items-count' %}",
+                                    type: "GET",
+                                    success: function(response) {
+                                        var wishlistCount = response.total_items;
+                                        $("#wishlist-count").text(wishlistCount);
+                                        $("#wishlist-count2").text(wishlistCount);
+
+                                    }
+                                });
+                            }
+
+                            // Call the function to update counts when the page loads
+                            $(document).ready(function() {
+                                updateCartAndWishlistCounts();
+                            });
+                        </script>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="#">Home</a>
+                    <a class="breadcrumb-item text-dark" href="#">Shop</a>
+                    <span class="breadcrumb-item active">Shopping Cart</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+
+    <!-- Cart Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-lg-8 table-responsive mb-5">
+                <table class="table table-light table-borderless table-hover text-center mb-0">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Products</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody class="align-middle">
+                        {% for cart_item in cart_items %}
+                        <tr>
+                            <td class="align-middle">
+                                <img src="/media/{{ cart_item.product.image }}" alt="{{ cart_item.product.name }}" style="width: 50px;">
+                                {{ cart_item.product.name }}
+                            </td>
+                            <td class="align-middle">Ksh .{{ cart_item.product.price }}</td>
+                            <td class="align-middle">
+                                <div class="input-group quantity mx-auto" style="width: 100px;">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-primary btn-minus">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="{{ cart_item.quantity }}">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-primary btn-plus">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="align-middle" id="prod-subtotal">
+                                <p>Ksh .{% widthratio cart_item.product.price 1 cart_item.quantity %}</p>
+                            </td>
+                            <td class="align-middle" data-product-id="{{ cart_item.product.id }}">
+                                <form class="remove-cart-form" action="{% url 'overview:delete_cart_item' %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="product_id" value="{{ cart_item.product.id }}">
+                                    <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                            <script>
+                            $(document).ready(function() {
+                                $(document).on("submit", ".remove-cart-form", function(event) {
+                                    event.preventDefault();
+
+                                    var form = $(this);
+                                    var productId = form.data("product-id");
+
+                                    $.ajax({
+                                        type: "POST",
+                                        url: form.attr("action"),
+                                        data: form.serialize(),
+                                        success: function(response) {
+                                            if (response.success) {
+                                                form.closest("tr").remove();
+                                                // Update the total price if needed
+                                                // ...
+                                            } else {
+                                                alert("Failed to remove product from cart.");
+                                            }
+                                        },
+                                        error: function() {
+                                            alert("An error occurred while removing the product.");
+                                        }
+                                    });
+                                });
+                            });
+                            </script>
+
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4">
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Cart Summary</span></h5>
+                <div class="bg-light p-30 mb-5">
+                    <div class="border-bottom pb-2">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h6>Subtotal</h6>
+                            <h6 id="subtotal">{{ total_price }}</h6>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-medium">Shipping</h6>
+                            <h6 class="font-weight-medium">Ksh 0</h6>
+                        </div>
+                    </div>
+                    <div class="pt-2">
+                        <div class="d-flex justify-content-between mt-2">
+                            <h5>Total</h5>
+                            <!-- Display the calculated total here -->
+                            <h5>Ksh {{ total_price }}</h5>
+                        </div>
+                        <button type="submit" class="btn btn-block mb-2">
+                            <a type="submit" class="btn btn-block btn-primary font-weight-bold my-3 py-3" href="{% url 'overview:checkout-prev' %}">Proceed to Checkout</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Cart End -->
+
+    <script>
+        // JavaScript to calculate and update the cart total
+        const itemTotals = document.querySelectorAll('.item-total');
+        const subtotalElement = document.getElementById('subtotal');
+        const cartTotalElement = document.getElementById('cart-total');
+
+        let subtotal = 0;
+
+        itemTotals.forEach((itemTotal) => {
+            subtotal += parseFloat(itemTotal.textContent.replace('Ksh ', ''));
+        });
+
+        cartTotalElement.textContent = `$${(subtotal + 10).toFixed(2)}`;
+    </script>
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-secondary mt-5 pt-5">
+        <div class="row px-xl-5 pt-5">
+            <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+                <h5 class="text-secondary text-uppercase mb-4">Get In Touch</h5>
+                <p class="mb-4">There is nothing we consider more important to us than our customers. In case of any inconvenience please do not hesitate to contact us</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Nairobi,Kenya,Africa</p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>nkilanibyteiyan@gmail.com</p>
+                <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>0720952739</p>
+            </div>
+            <div class="col-lg-8 col-md-12">
+                <div class="row">
+                    <div class="col-md-4 mb-5">
+                        <h5 class="text-secondary text-uppercase mb-4">Quick Shop</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-secondary mb-2" href="{% url 'overview:landing_page' %}"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                            <a class="text-secondary mb-2" href="{% url 'overview:shop-prev' %}"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
+                            <a class="text-secondary mb-2" href="{% url 'overview:cart-prev' %}"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                            <a class="text-secondary mb-2" href="{% url 'overview:checkout-prev' %}"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                            <a class="text-secondary" href="{% url 'overview:checkout-prev' %}"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-5">
+                        <h5 class="text-secondary text-uppercase mb-4">My Account</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-secondary mb-2" href="{% url 'overview:landing_page' %}"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                            <a class="text-secondary mb-2" href="{% url 'overview:shop-prev' %}"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
+                            <a class="text-secondary mb-2" href="{% url 'overview:cart-prev' %}"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                            <a class="text-secondary mb-2" href="{% url 'overview:checkout-prev' %}"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                            <a class="text-secondary" href="{% url 'overview:checkout-prev' %}"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-5">
+                        <h5 class="text-secondary text-uppercase mb-4">Newsletter</h5>
+                        <p>To receive any information from us please subscribe </p>
+                        <form action="{% url 'overview:get-newsletter' %}" method="post">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="newsletter_email" placeholder="Your Email Address">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">Sign Up</button>
+                                </div>
+                            </div>
+                        </form>
+                        <h6 class="text-secondary text-uppercase mt-4 mb-3">Follow Us</h6>
+                        <div class="d-flex">
+                            <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-primary btn-square" href="https://www.instagram.com/nkilanibyteiyan/"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row border-top mx-xl-5 py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
+            <div class="col-md-6 px-xl-0">
+                <p class="mb-md-0 text-center text-md-left text-secondary">
+                    &copy; <a class="text-primary" href="#">Domain</a>. All Rights Reserved. Designed
+                    by
+                    <a class="text-primary" href="https://github.com/Mariaolotira">Mariao Lotira</a>
+                </p>
+            </div>
+            <div class="col-md-6 px-xl-0 text-center text-md-right">
+                <img class="img-fluid" src="{% static 'img/payments.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="{% static 'mail/jqBootstrapValidation.min.js' %}"></script>
+    <script src="{% static 'mail/contact.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
